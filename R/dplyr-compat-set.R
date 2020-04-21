@@ -1,3 +1,19 @@
+# ------------------------------------------------------------------------------
+# Functions to extend dplyr verbs to work with parameter set objects
+
+# ------------------------------------------------------------------------------
+# These functions are for dplyr > 1.0.0
+
+#' @export
+dplyr_row_slice.parameters <- function(data, i, ...)  {
+  vctrs::vec_slice(data, i)
+}
+
+
+# ------------------------------------------------------------------------------
+# Changes below for dplyr < 1.0.0 to extend S3 methods
+
+
 ## based on
 ## https://github.com/tidyverse/googledrive/commit/95455812d2e0d6bdf92b5f6728e3265bf65d8467#diff-ba61d4f2ccd992868e27305a9ab68a3c
 

@@ -26,7 +26,8 @@ Imports:
     withr,
     DiceDesign,
     dplyr,
-    lifecycle
+    lifecycle,
+    vctrs
 Suggests: 
     testthat,
     knitr,

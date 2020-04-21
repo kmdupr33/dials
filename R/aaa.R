@@ -1,19 +1,19 @@
 # nocov start
-.onLoad <- function(libname, pkgname) {
-    s3_register("dplyr::arrange", "param_grid")
-    s3_register("dplyr::filter",  "param_grid")
-    s3_register("dplyr::mutate",  "param_grid")
-    s3_register("dplyr::rename",  "param_grid")
-    s3_register("dplyr::select",  "param_grid")
-    s3_register("dplyr::slice",   "param_grid")
-
-    s3_register("dplyr::arrange", "parameters")
-    s3_register("dplyr::filter",  "parameters")
-    s3_register("dplyr::mutate",  "parameters")
-    s3_register("dplyr::rename",  "parameters")
-    s3_register("dplyr::select",  "parameters")
-    s3_register("dplyr::slice",   "parameters")
-}
+# .onLoad <- function(libname, pkgname) {
+#     s3_register("dplyr::arrange", "param_grid")
+#     s3_register("dplyr::filter",  "param_grid")
+#     s3_register("dplyr::mutate",  "param_grid")
+#     s3_register("dplyr::rename",  "param_grid")
+#     s3_register("dplyr::select",  "param_grid")
+#     s3_register("dplyr::slice",   "param_grid")
+#
+#     s3_register("dplyr::arrange", "parameters")
+#     s3_register("dplyr::filter",  "parameters")
+#     s3_register("dplyr::mutate",  "parameters")
+#     s3_register("dplyr::rename",  "parameters")
+#     s3_register("dplyr::select",  "parameters")
+#     s3_register("dplyr::slice",   "parameters")
+# }
 # nocov end
 
 
