@@ -16,13 +16,13 @@ set_test <- function(x) {
 # ------------------------------------------------------------------------------
 
 test_that('are methods available?', {
-  expect_true(is.function(dials:::arrange.parameters))
-  expect_true(is.function(dials:::filter.parameters))
-  expect_true(is.function(dials:::mutate.parameters))
-  expect_true(is.function(dials:::rename.parameters))
-  expect_true(is.function(dials:::select.parameters))
-  expect_true(is.function(dials:::slice.parameters))
-  expect_true(is.function(dials:::`[.parameters`))
+  # expect_true(is.function(dials:::arrange.parameters))
+  # expect_true(is.function(dials:::filter.parameters))
+  # expect_true(is.function(dials:::mutate.parameters))
+  # expect_true(is.function(dials:::rename.parameters))
+  # expect_true(is.function(dials:::select.parameters))
+  # expect_true(is.function(dials:::slice.parameters))
+  # expect_true(is.function(dials:::`[.parameters`))
 })
 
 # ------------------------------------------------------------------------------
