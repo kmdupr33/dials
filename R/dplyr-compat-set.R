@@ -2,7 +2,7 @@
 # Functions to extend dplyr verbs to work with parameter set objects
 
 # ------------------------------------------------------------------------------
-# These functions are for dplyr > 1.0.0
+# These functions are for dplyr > 1.0.0. See ?dplyr::dplyr_extending
 
 #' @export
 dplyr_row_slice.parameters <- function(data, i, ...)  {
@@ -14,24 +14,15 @@ dplyr_col_modify.parameters <- function(.data, cols) {
   .data <- dplyr::dplyr_col_modify(tibble::as_tibble(.data), cols)
   .data <- check_new_names(.data)
   parameters_constr(
-    name = .data$name,
-    id = .data$id,
-    source = .data$source,
-    component = .data$component,
+    name         = .data$name,
+    id           = .data$id,
+    source       = .data$source,
+    component    = .data$component,
     component_id = .data$component_id,
-    object = .data$object
+    object       = .data$object
   )
 }
 
-# ------------------------------------------------------------------------------
-# Changes below for dplyr < 1.0.0 to extend S3 methods
-
-
-## based on
-## https://github.com/tidyverse/googledrive/commit/95455812d2e0d6bdf92b5f6728e3265bf65d8467#diff-ba61d4f2ccd992868e27305a9ab68a3c
-
-#' base_classes <- c(class(tibble::tibble()))
-#'
 check_new_names <- function(x) {
   parameters_cols <- c('name', 'id', 'source', 'component', 'component_id', 'object')
   if (!all(parameters_cols %in% names(x))) {
@@ -55,78 +46,39 @@ check_new_names <- function(x) {
   }
   invisible(x)
 }
+
+#' @export
+`[.parameters` <- function(x, i, j, drop = FALSE) {
+  res <- NextMethod()
+  check_new_names(res)
+  # TODO For new dplyr check names and convert to tibble if required cols are not there
+  parameters_constr(
+    name         = res$name,
+    id           = res$id,
+    source       = res$source,
+    component    = res$component,
+    component_id = res$component_id,
+    object       = res$object
+  )
+}
+
+# if (dplyr < 1.0.0) {
+#   # define S3 methods
+#   if (R == 3.6.0) {
+#     # s3_register them
+#   }
+# } else {
+#   # define new methods
+# }
+
+
+# ------------------------------------------------------------------------------
+# Changes below for dplyr < 1.0.0 to extend S3 methods
+
+
+## based on
+## https://github.com/tidyverse/googledrive/commit/95455812d2e0d6bdf92b5f6728e3265bf65d8467#diff-ba61d4f2ccd992868e27305a9ab68a3c
+
+#' base_classes <- c(class(tibble::tibble()))
 #'
-#'
-#' maybe_parameters <- function(x, extras = NULL, att = NULL) {
-#'   if (is_tibble(x)) {
-#'     x <- reset_parameters(x)
-#'
-#'     ## Add missing classes
-#'     if (length(extras) > 0)
-#'       class(x) <- unique(c(extras, class(x)))
-#'   } else {
-#'     x <- as_tibble(x)
-#'   }
-#'   x
-#' }
-#'
-#' reset_parameters <- function(x) {
-#'   stopifnot(inherits(x, "data.frame"))
-#'   structure(x, class = c("parameters", base_classes))
-#' }
-#'
-#' #' @export
-#' `[.parameters` <- function(x, i, j, drop = FALSE) {
-#'   res <- NextMethod()
-#'   check_new_names(res)
-#'   parameters_constr(res$name, res$id, res$source, res$component, res$component_id,
-#'                    res$object)
-#' }
-#'
-#'
-#' ## dials does not import any generics from dplyr,
-#' ## but if dplyr is loaded and main verbs are used on a
-#' ## `parameters` object, we want to retain the `parameters` class (and
-#' ## any others) if it is proper to do so therefore these
-#' ## S3 methods are registered manually in .onLoad()
-#'
-#' arrange.parameters <- function(.data, ...) {
-#'   res <- NextMethod()
-#'   parameters_constr(res$name, res$id, res$source, res$component, res$component_id,
-#'                    res$object)
-#' }
-#'
-#' filter.parameters <- function(.data, ...) {
-#'   res <- NextMethod()
-#'   parameters_constr(res$name, res$id, res$source, res$component, res$component_id,
-#'                    res$object)
-#' }
-#'
-#' # `mutate` appears to add rownames but remove other attributes. We'll
-#' # add them back in.
-#' mutate.parameters <- function(.data, ...) {
-#'   res <- NextMethod()
-#'   check_new_names(res)
-#'   parameters_constr(res$name, res$id, res$source, res$component, res$component_id,
-#'                    res$object)
-#' }
-#'
-#' rename.parameters <- function(.data, ...) {
-#'   res <- NextMethod()
-#'   check_new_names(res)
-#'   parameters_constr(res$name, res$id, res$source, res$component, res$component_id,
-#'                    res$object)
-#' }
-#'
-#' select.parameters <- function(.data, ...) {
-#'   res <- NextMethod()
-#'   check_new_names(res)
-#'   parameters_constr(res$name, res$id, res$source, res$component, res$component_id,
-#'                    res$object)
-#' }
-#'
-#' slice.parameters <- function(.data, ...) {
-#'   res <- NextMethod()
-#'   parameters_constr(res$name, res$id, res$source, res$component, res$component_id,
-#'                    res$object)
-#' }
+
