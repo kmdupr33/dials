@@ -14,3 +14,7 @@
 utils::globalVariables(c("component_id", "call_info", "object", "label",
                          "id", "not_final", "component", "name"))
 
+# ------------------------------------------------------------------------------
+
+dplyr_version <- as.character(utils::packageVersion("dplyr"))
+is_new_dplyr <- utils::compareVersion(dplyr_version, "0.8.99.9000") >= 0

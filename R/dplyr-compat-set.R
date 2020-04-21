@@ -23,18 +23,23 @@ dplyr_col_modify.parameters <- function(.data, cols) {
   )
 }
 
+dials_param_cols <- c('name', 'id', 'source', 'component', 'component_id', 'object')
+
+has_req_names <- function(x) {
+  all(dials_param_cols %in% names(x))
+}
+
 check_new_names <- function(x) {
-  parameters_cols <- c('name', 'id', 'source', 'component', 'component_id', 'object')
-  if (!all(parameters_cols %in% names(x))) {
+  if (!has_req_names(x)) {
     rlang::abort(
       paste0(
         "A `parameters` object has required columns.\nMissing columns: ",
-        paste0("'", parameters_cols[!parameters_cols %in% names(x)], "'",
+        paste0("'", dials_param_cols[!dials_param_cols %in% names(x)], "'",
                collapse = ", ")
       )
     )
   }
-  extra_names <- names(x)[!names(x) %in% parameters_cols]
+  extra_names <- names(x)[!names(x) %in% dials_param_cols]
   if (length(extra_names) != 0) {
     rlang::warn(
       paste0(
@@ -50,16 +55,21 @@ check_new_names <- function(x) {
 #' @export
 `[.parameters` <- function(x, i, j, drop = FALSE) {
   res <- NextMethod()
-  check_new_names(res)
-  # TODO For new dplyr check names and convert to tibble if required cols are not there
-  parameters_constr(
-    name         = res$name,
-    id           = res$id,
-    source       = res$source,
-    component    = res$component,
-    component_id = res$component_id,
-    object       = res$object
-  )
+  if (!has_req_names(res)) {
+    res <- tibble::as_tibble(res)
+  } else {
+    check_new_names(res)
+    res <-
+      parameters_constr(
+        name         = res$name,
+        id           = res$id,
+        source       = res$source,
+        component    = res$component,
+        component_id = res$component_id,
+        object       = res$object
+      )
+  }
+  res
 }
 
 # if (dplyr < 1.0.0) {

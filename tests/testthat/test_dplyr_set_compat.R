@@ -16,13 +16,14 @@ set_test <- function(x) {
 # ------------------------------------------------------------------------------
 
 test_that('are methods available?', {
-  # expect_true(is.function(dials:::arrange.parameters))
-  # expect_true(is.function(dials:::filter.parameters))
-  # expect_true(is.function(dials:::mutate.parameters))
-  # expect_true(is.function(dials:::rename.parameters))
-  # expect_true(is.function(dials:::select.parameters))
-  # expect_true(is.function(dials:::slice.parameters))
-  # expect_true(is.function(dials:::`[.parameters`))
+  skip_if(dials:::is_new_dplyr)
+  expect_true(is.function(dials:::arrange.parameters))
+  expect_true(is.function(dials:::filter.parameters))
+  expect_true(is.function(dials:::mutate.parameters))
+  expect_true(is.function(dials:::rename.parameters))
+  expect_true(is.function(dials:::select.parameters))
+  expect_true(is.function(dials:::slice.parameters))
+  expect_true(is.function(dials:::`[.parameters`))
 })
 
 # ------------------------------------------------------------------------------
@@ -50,10 +51,6 @@ test_that('dplyr ops', {
     expect_true(
       set_test(set_2 %>% mutate(id2 = letters[1:nrow(set_2)]))
     )
-  )
-  expect_error(
-    set_1 %>% dplyr::select(id),
-    "A `parameters` object has required columns"
   )
   expect_true(
     set_test(set_1 %>% arrange(id))
@@ -87,3 +84,19 @@ test_that('dplyr ops', {
     "A `parameters` object has required columns"
   )
 })
+
+# ------------------------------------------------------------------------------
+
+test_that('subsetting columns - old dplyr', {
+  skip_if(dials:::is_new_dplyr)
+  expect_error(
+    set_1 %>% dplyr::select(id),
+    "A `parameters` object has required columns"
+  )
+})
+
+test_that('subsetting columns - new dplyr', {
+  skip_if(!dials:::is_new_dplyr)
+  expect_true(set_1 %>% dplyr::select(id) %>% tibble::is_tibble())
+})
+
