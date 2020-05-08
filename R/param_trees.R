@@ -148,13 +148,13 @@ cost_complexity <- function(range = c(-10, -1), trans = log10_trans()) {
 
 #' @export
 #' @rdname trees
-stop_iter <- function(range = c(01L, 10L), trans = NULL) {
+stop_iter <- function(range = c(2L, 10L), trans = NULL) {
   new_quant_param(
     type = "integer",
     range = range,
     inclusive = c(TRUE, TRUE),
     trans = trans,
-    label = c(trees = "Iterations Until Stopping"),
+    label = c(trees = "Iterations Without Improvement"),
     finalize = NULL
   )
 }

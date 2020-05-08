@@ -28,7 +28,7 @@ prune(values = c(TRUE, FALSE))
 
 cost_complexity(range = c(-10, -1), trans = log10_trans())
 
-stop_iter(range = c(1L, 10L), trans = NULL)
+stop_iter(range = c(2L, 10L), trans = NULL)
 }
 \arguments{
 \item{range}{A two-element vector holding the \emph{defaults} for the smallest and
