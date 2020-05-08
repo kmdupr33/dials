@@ -9,6 +9,7 @@
 \alias{tree_depth}
 \alias{prune}
 \alias{cost_complexity}
+\alias{stop_iter}
 \title{Parameter functions related to tree- and rule-based models.}
 \usage{
 trees(range = c(1L, 2000L), trans = NULL)
@@ -26,6 +27,8 @@ tree_depth(range = c(1L, 15L), trans = NULL)
 prune(values = c(TRUE, FALSE))
 
 cost_complexity(range = c(-10, -1), trans = log10_trans())
+
+stop_iter(range = c(1L, 10L), trans = NULL)
 }
 \arguments{
 \item{range}{A two-element vector holding the \emph{defaults} for the smallest and
@@ -64,6 +67,7 @@ further. (See \code{parsnip::boost_tree()}). This corresponds to \code{gamma} in
 (See \code{parsnip::boost_tree()}).
 \item \code{prune()}: A logical for whether a tree or set of rules should be pruned.
 \item \code{cost_complexity()}: The cost-complexity parameter in classical CART models.
+\item \code{stop_iter()}: The number of iterations without improvement before stopping.
 }
 }
 \examples{

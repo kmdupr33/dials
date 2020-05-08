@@ -42,7 +42,7 @@
 
 
 <meta property="og:title" content="Changelog" />
-<meta property="og:image" content="/logo.png" />
+<meta property="og:image" content="https://dials.tidymodels.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -61,7 +61,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -77,8 +77,8 @@
       <div class="navbar-brand-container">
         <a class="navbar-brand" href="../index.html">dials</a>
         <div class="info">
-          <span class="partof">part of <a href="https://github.com/tidymodels">tidymodels</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.4.9000</span>
+          <span class="partof">part of <a href="https://tidymodels.org">tidymodels</a></span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.6.9000</span>
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@
   <a href="../news/index.html">News</a>
 </li>
         <li>
-  <a href="https://github.com/tidymodels/dials">
+  <a href="https://github.com/tidymodels/dials/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -112,21 +112,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
+      <h1 data-toc-skip>Changelog <small></small></h1>
       <small>Source: <a href='https://github.com/tidymodels/dials/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="dials-development-version" class="section level1">
-<h1 class="page-header">
-<a href="#dials-development-version" class="anchor"></a>dials (development version)<small> Unreleased </small>
+    <div id="dials-0069000" class="section level1">
+<h1 class="page-header" data-toc-text="0.0.6.9000">
+<a href="#dials-0069000" class="anchor"></a>dials 0.0.6.9000<small> Unreleased </small>
 </h1>
 <ul>
+<li>Added <code><a href="../reference/trees.html">stop_iter()</a></code>.</li>
+</ul>
+</div>
+    <div id="dials-006" class="section level1">
+<h1 class="page-header" data-toc-text="0.0.6">
+<a href="#dials-006" class="anchor"></a>dials 0.0.6<small> 2020-04-03 </small>
+</h1>
+<ul>
+<li>Quick bug fix release related to range checks in 0.0.5. The check is more forgiving when the required type is integer and a double is provided.</li>
+</ul>
+</div>
+    <div id="dials-005" class="section level1">
+<h1 class="page-header" data-toc-text="0.0.5">
+<a href="#dials-005" class="anchor"></a>dials 0.0.5<small> 2020-04-01 </small>
+</h1>
+<ul>
+<li><p>When kept in the original units, a parameter’s range must now be the same data type as the parameter.</p></li>
 <li><p>Renamed <code><a href="../reference/cost.html">margin()</a></code> to <code><a href="../reference/cost.html">svm_margin()</a></code> (<a href='https://github.com/gabrielodom'>@gabrielodom</a> and <a href='https://github.com/gralgomez'>@gralgomez</a>, <a href='https://github.com/tidymodels/dials/issues/85'>#85</a>)</p></li>
-<li><p>A bug in space filling designs with qualitative parameters was fixed <a href="https://github.com/tidymodels/dials/issues/94"><a href='https://github.com/tidymodels/dials/issues/94'>#94</a></a></p></li>
+<li><p>A bug in space filling designs with qualitative parameters was fixed (<a href='https://github.com/tidymodels/dials/issues/94'>#94</a>)</p></li>
+<li><p>A better error message was created when grids are used with parameters sets that contain parameters that require finalization (<a href='https://github.com/tidymodels/dials/issues/99'>#99</a>)</p></li>
+<li><p>Space-filling desings now share the same attributes as other grid objects (<a href='https://github.com/tidymodels/dials/issues/100'>#100</a>)</p></li>
+<li><p>The range for <code>sample_frac()</code> was fixed (<a href='https://github.com/tidymodels/dials/issues/96'>#96</a>)</p></li>
 </ul>
 </div>
     <div id="dials-004" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.0.4">
 <a href="#dials-004" class="anchor"></a>dials 0.0.4<small> 2019-12-02 </small>
 </h1>
 <div id="new-parameter-functions" class="section level2">
@@ -155,7 +175,7 @@
 </div>
 </div>
     <div id="dials-003" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.0.3">
 <a href="#dials-003" class="anchor"></a>dials 0.0.3<small> 2019-10-01 </small>
 </h1>
 <div id="breaking-changes-1" class="section level2">
@@ -185,7 +205,7 @@
 </div>
 </div>
     <div id="dials-002" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.0.2">
 <a href="#dials-002" class="anchor"></a>dials 0.0.2<small> 2018-12-09 </small>
 </h1>
 <ul>
@@ -197,7 +217,7 @@
 </ul>
 </div>
     <div id="dials-001" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.0.1">
 <a href="#dials-001" class="anchor"></a>dials 0.0.1<small> 2018-08-13 </small>
 </h1>
 <ul>
@@ -207,16 +227,9 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#dials-development-version">development version</a></li>
-        <li><a href="#dials-004">0.0.4</a></li>
-        <li><a href="#dials-003">0.0.3</a></li>
-        <li><a href="#dials-002">0.0.2</a></li>
-        <li><a href="#dials-001">0.0.1</a></li>
-      </ul>
-    </div>
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 
 </div>

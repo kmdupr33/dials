@@ -33,6 +33,8 @@
 #' * `prune()`: A logical for whether a tree or set of rules should be pruned.
 #'
 #' * `cost_complexity()`: The cost-complexity parameter in classical CART models.
+#'
+#' * `stop_iter()`: The number of iterations without improvement before stopping.
 #' @examples
 #' trees()
 #' min_n()
@@ -140,6 +142,19 @@ cost_complexity <- function(range = c(-10, -1), trans = log10_trans()) {
     inclusive = c(TRUE, TRUE),
     trans = trans,
     label = c(cost_complexity = "Cost-Complexity Parameter"),
+    finalize = NULL
+  )
+}
+
+#' @export
+#' @rdname trees
+stop_iter <- function(range = c(01L, 10L), trans = NULL) {
+  new_quant_param(
+    type = "integer",
+    range = range,
+    inclusive = c(TRUE, TRUE),
+    trans = trans,
+    label = c(trees = "Iterations Until Stopping"),
     finalize = NULL
   )
 }

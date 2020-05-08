@@ -42,7 +42,7 @@
 
 
 <meta property="og:title" content="Function reference" />
-<meta property="og:image" content="/logo.png" />
+<meta property="og:image" content="https://dials.tidymodels.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -61,7 +61,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-index">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -77,8 +77,8 @@
       <div class="navbar-brand-container">
         <a class="navbar-brand" href="../index.html">dials</a>
         <div class="info">
-          <span class="partof">part of <a href="https://github.com/tidymodels">tidymodels</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.4.9000</span>
+          <span class="partof">part of <a href="https://tidymodels.org">tidymodels</a></span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.6.9000</span>
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@
   <a href="../news/index.html">News</a>
 </li>
         <li>
-  <a href="https://github.com/tidymodels/dials">
+  <a href="https://github.com/tidymodels/dials/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -271,6 +271,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="num_tokens.html">num_tokens()</a></code> </p>
+        </td>
+        <td><p>Parameter to determine number of tokens in ngram</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="over_ratio.html">over_ratio()</a></code> <code><a href="over_ratio.html">under_ratio()</a></code> </p>
         </td>
         <td><p>Parameters for class-imbalance sampling</p></td>
@@ -337,7 +343,7 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="trees.html">trees()</a></code> <code><a href="trees.html">min_n()</a></code> <code><a href="trees.html">sample_size()</a></code> <code><a href="trees.html">sample_prop()</a></code> <code><a href="trees.html">loss_reduction()</a></code> <code><a href="trees.html">tree_depth()</a></code> <code><a href="trees.html">prune()</a></code> <code><a href="trees.html">cost_complexity()</a></code> </p>
+          <p><code><a href="trees.html">trees()</a></code> <code><a href="trees.html">min_n()</a></code> <code><a href="trees.html">sample_size()</a></code> <code><a href="trees.html">sample_prop()</a></code> <code><a href="trees.html">loss_reduction()</a></code> <code><a href="trees.html">tree_depth()</a></code> <code><a href="trees.html">prune()</a></code> <code><a href="trees.html">cost_complexity()</a></code> <code><a href="trees.html">stop_iter()</a></code> </p>
         </td>
         <td><p>Parameter functions related to tree- and rule-based models.</p></td>
       </tr><tr>
@@ -388,10 +394,9 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
-    </ul>
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
