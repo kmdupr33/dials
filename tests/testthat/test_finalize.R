@@ -29,28 +29,30 @@ test_that('estimate rows', {
     list(lower = 0, upper = 1)
   )
   expect_equal(
-    get_n_frac_range(sample_size(c(unknown(), unknown())), iris, frac = c(.3, .7))$range,
-    list(lower = 45, upper = 105)
+    get_n_frac_range(sample_size(c(unknown(), unknown())), mtcars, frac = c(.3, .7))$range,
+    list(lower = 9, upper = 22)
   )
   expect_equal(
     get_n_frac_range(
       sample_size(c(unknown(), unknown()), trans = log10_trans()),
-      x = iris,
+      x = mtcars,
       log_vals = TRUE,
       frac = c(.3, .7)
     )$range,
-    list(lower = log10(45), upper = log10(105))
+    list(lower = log10(9), upper = log10(22))
   )
 
   expect_equal(
-    get_batch_sizes(batch_size(), iris, frac = c(.3, .7))$range,
-    list(lower = log2(45), upper = log2(105))
+    get_batch_sizes(batch_size(), mtcars, frac = c(.3, .7))$range,
+    list(lower = log2(9), upper = log2(22))
   )
 })
 
 
 test_that('estimate sigma', {
-  expect_error(get_rbf_range(rbf_sigma(), iris))
+  mtcars2 <- mtcars
+  mtcars2$cyl <- factor(mtcars2$cyl)
+  expect_error(get_rbf_range(rbf_sigma(), mtcars2))
 
   run_1 <- range_get(get_rbf_range(rbf_sigma(), mtcars, seed = 5624))
   run_2 <- range_get(get_rbf_range(rbf_sigma(), mtcars, seed = 5624))
