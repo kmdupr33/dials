@@ -4,6 +4,8 @@
 \alias{finalize}
 \alias{finalize.list}
 \alias{finalize.param}
+\alias{finalize.logical}
+\alias{finalize.default}
 \alias{finalize.parameters}
 \alias{get_p}
 \alias{get_log_p}
@@ -19,6 +21,10 @@ finalize(object, ...)
 \method{finalize}{list}(object, x, force = TRUE, ...)
 
 \method{finalize}{param}(object, x, force = TRUE, ...)
+
+\method{finalize}{logical}(object, x, force = TRUE, ...)
+
+\method{finalize}{default}(object, x, force = TRUE, ...)
 
 \method{finalize}{parameters}(object, x, force = TRUE, ...)
 
