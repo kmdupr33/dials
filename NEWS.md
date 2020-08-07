@@ -1,5 +1,7 @@
 # dials (development version)
 
+ * Collected errant parameters from several `parsnip`-adjacent packages. 
+
 # dials 0.0.8
 
 * A number of new parameter objects associated with engine-specific functions were added for engines "ranger", "randomForest", "earth" and "C5.0". 
